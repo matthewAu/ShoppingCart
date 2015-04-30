@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>VirtualCart</title>
+
+<style>
+body{
+	background-color: #b54b19;
+}
+.container {
+    border: 1px solid black;
+	margin:50px;
+	background:#ccc;
+	width:150px;
+}
+#cubeParent{
+	height:150px;
+	width:150px;
+	position:relative;
+}
+.cubeFace, .cubeFace1{
+	height:150px;
+	width:150px;
+	position:absolute;
+}
+#face1{
+	background:#00F;
+}
+#face2{
+	background:#f0f;
+}
+#face3{
+	background:#063;
+}
+#face4{
+	background:#c00;
+}
+#face5{
+	background:#f60;
+}
+#face6{
+	background:#ff0;
+}
+.carItem{
+	position:absolute;
+	width:85px;
+	height:113px;
+}
+#rotPlane{
+	width:200px;
+	height:200px;
+	background:#00f;
+	position:relative;
+	color:#FFF;
+}
+
+.cube_container{
+	width: 1050px;
+	height: 263px;
+	border:3px solid white;
+	float: left;
+	margin-right: 50px;
+	margin-bottom: 10px;
+	background-color: white;
+}
+.lastCube{
+	margin-right: 0px;
+}
+#cube_e{
+	width: 1050px;
+	height: 263px;
+	position: relative;
+}
+.box{	
+	width: 1050px;
+	height: 263px;
+	position: absolute;
+	/*opacity: 0.2;*/
+}
+#front{
+	/*background-color:#12ABB3;*/
+	background: url('img/a.jpg');
+	background-size: 1050px 263px;
+	background-repeat: no-repeat;
+}
+#back{
+	/*background-color:#F2E2B3;*/
+	background: url('img/b.jpg');
+	background-size: 1050px 263px;
+	background-repeat: no-repeat;
+}
+#up{
+	/*background-color:#F28AB3;*/
+	background: url('img/c.jpg');
+	background-size: 1050px 263px;
+	background-repeat: no-repeat;
+}
+#bottom{
+	/*background-color:#12AB33;*/
+	background: url('img/d.jpg');
+	background-size: 1050px 263px;
+	background-repeat: no-repeat;
+}
+#slider{
+	margin-top: 40px;
+	float: left;
+}
+#slider2{
+	margin-top: 40px;
+	float: left;
+}
+#logo{
+	width: 450px;
+	margin-right: auto;
+	margin-left: auto;
+	border:#f46521 solid 1px;
+	border-radius: 2em;
+	background-color: #f46521;
+	z-index: 99;
+	position: relative;
+}
+#border{
+	border:2em white solid;
+	border-radius: 2em;
+	margin-left: 50px;
+	margin-right: 50px;
+	padding: 10px;
+	padding-bottom: 80px;
+	height: 550px;
+	margin-top: -80px;
+}
+.row{
+padding: 50px;	
+margin-bottom: 20px;
+}
+.center{
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+#btnExit{
+	opacity: 0%;
+	width: 20px;
+	height: 20px;
+	top:0;
+	right: 0;
+	position: absolute;
+}
+
+</style>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/TweenMax.min.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.css">
+<script src="scripts/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/jquery.ui.touch-punch.js"></script>
+</head>
+
+<body>
+<p>
+	<div onclick="javascript:window.close()" id="btnExit"></div>
+<!-- <button id="btn7">Tween Faces</button><button id="btn8">Rotate Parent</button> -->
+<button hidden="true" id="custom">Create Cube</button>
+<button hidden="true" id="next">Next</button><button hidden="true" id="previous">Previous</button>
+<div id="logo" align="center"><img src="img/mannings.jpg" width="350px" ></div>
+<!-- <div>
+<button id="btn1">front face</button> <button id="btn2">right face</button> <button id="btn3">back face</button><button id="btn4">left face</button><button id="btn5">top face</button><button id="btn6">bottom face</button> -->
+</div>
+</p>
+
+<!-- <div class="container">
+	<div id="cubeParent">
+    	<div class="cubeFace" id="face1">a</div>
+        <div class="cubeFace" id="face2">b</div>
+        <div class="cubeFace" id="face3">c</div>
+        <div class="cubeFace" id="face4">d</div>
+        <div class="cubeFace" id="face5">e</div>
+        <div class="cubeFace" id="face6">f</div>
+    </div>
+</div> -->
+<div id="border">
+<!-- <div class="row" id="row1">
+	<div class="cube_container">
+		<div id="cube_e" class="r1">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div class="cube_container">
+		<div id="cube_e" class="r1">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div class="cube_container">
+		<div id="cube_e" class="r1">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div class="cube_container">
+		<div id="cube_e" class="r1">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div id="slider"></div>
+</div>
+
+	
+
+<div class="row">
+	<div class="cube_container">
+		<div id="cube_e" class="r2">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div class="cube_container">
+		<div id="cube_e" class="r2">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div class="cube_container">
+		<div id="cube_e" class="r2">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+	<div class="cube_container">
+		<div id="cube_e" class="r2">
+			<div class="box" id="front"></div>
+			<div class="box" id="up"></div>
+			<div class="box" id="back"></div>
+			<div class="box" id="bottom"></div>
+		</div>
+	</div>
+</div>
+	<div id="slider2"></div> -->
+	<div class="row">
+		<div class="cube_container">
+			<div id="cube_e" class="r1">
+				<div class="box" id="front" style="background:url('img/r1.jpg');" ></div>
+				<div class="box" id="up" style="background:url('img/r2.jpg');" ></div>
+				<div class="box" id="back" style="background:url('img/r3.jpg');" ></div>
+				<div class="box" id="bottom" style="background:url('img/r4.jpg');" ></div>
+			</div>
+		</div>
+		<div></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="cube_container">
+			<div id="cube_e" class="r2">
+				<div class="box" id="front" style="background:url('img/r2.jpg');" ></div>
+				<div class="box" id="up" style="background:url('img/r3.jpg');" ></div>
+				<div class="box" id="back" style="background:url('img/r4.jpg');" ></div>
+				<div class="box" id="bottom" style="background:url('img/r5.jpg');" ></div>
+			</div>
+		</div>
+		<div></div>
+	</div>
+</div>
+
+
+<script>
+var supportTouch = $.support.touch,
+            scrollEvent = "touchmove scroll",
+            touchStartEvent = supportTouch ? "touchstart" : "mousedown",
+            touchStopEvent = supportTouch ? "touchend" : "mouseup",
+            touchMoveEvent = supportTouch ? "touchmove" : "mousemove";
+    $.event.special.swipeupdown = {
+        setup: function() {
+            var thisObject = this;
+            var $this = $(thisObject);
+            $this.bind(touchStartEvent, function(event) {
+                var data = event.originalEvent.touches ?
+                        event.originalEvent.touches[ 0 ] :
+                        event,
+                        start = {
+                            time: (new Date).getTime(),
+                            coords: [ data.pageX, data.pageY ],
+                            origin: $(event.target)
+                        },
+                        stop;
+
+                function moveHandler(event) {
+                    if (!start) {
+                        return;
+                    }
+                    var data = event.originalEvent.touches ?
+                            event.originalEvent.touches[ 0 ] :
+                            event;
+                    stop = {
+                        time: (new Date).getTime(),
+                        coords: [ data.pageX, data.pageY ]
+                    };
+
+                    // prevent scrolling
+                    if (Math.abs(start.coords[1] - stop.coords[1]) > 10) {
+                        event.preventDefault();
+                    }
+                }
+                $this
+                        .bind(touchMoveEvent, moveHandler)
+                        .one(touchStopEvent, function(event) {
+                    $this.unbind(touchMoveEvent, moveHandler);
+                    if (start && stop) {
+                        if (stop.time - start.time < 1000 &&
+                                Math.abs(start.coords[1] - stop.coords[1]) > 30 &&
+                                Math.abs(start.coords[0] - stop.coords[0]) < 75) {
+                            start.origin
+                                    .trigger("swipeupdown")
+                                    .trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
+                        }
+                    }
+                    start = stop = undefined;
+                });
+            });
+        }
+    };
+    $.each({
+        swipedown: "swipeupdown",
+        swipeup: "swipeupdown"
+    }, function(event, sourceEvent){
+        $.event.special[event] = {
+            setup: function(){
+                $(this).bind(sourceEvent, $.noop);
+            }
+        };
+    });
+
+var r1z=0;
+var r2z=0;
+
+$('.r1').on('swipedown',function(){
+	// alert("swipedown..");
+	var tl11 = new TimelineMax({paused:true});
+	r1z = Math.round((r1z-90)/90)*90;
+			tl11.to($(".r1"),0.5,{rotationX:r1z});
+			tl11.play(0);
+});
+$('.r1').on('swipeup',function(){
+	// alert("swipeup..");
+	var tl11 = new TimelineMax({paused:true});
+	r1z = Math.round((r1z+90)/90)*90;
+			tl11.to($(".r1"),0.5,{rotationX:r1z});
+			tl11.play(0);
+});$('.r2').on('swipedown',function(){
+	// alert("swipedown..");
+	var tl12 = new TimelineMax({paused:true});
+	r2z = Math.round((r2z-90)/90)*90;
+			tl12.to($(".r2"),0.5,{rotationX:r2z});
+			tl12.play(0);
+});
+$('.r2').on('swipeup',function(){
+	// alert("swipeup..");
+	var tl12 = new TimelineMax({paused:true});
+	r2z = Math.round((r2z+90)/90)*90;
+			tl12.to($(".r2"),0.5,{rotationX:r2z});
+			tl12.play(0);
+});
+ $(function() {
+    $( "#slider2" ).slider({
+    	orientation: "vertical",
+    	range:"min",
+    	value:1,
+    	step:10,
+    	min:0,
+    	max:360,
+    	slide:function(e,ui){
+    		console.log(ui.value);
+    		var tl2 = new TimelineMax({paused:true});
+			tl2.to($(".r2"),0.5,{rotationX:ui.value});
+			tl2.play(0);
+    	}
+    });
+  });
+
+ $(function() {
+    $( "#slider" ).slider({
+    	orientation: "vertical",
+    	range:"min",
+    	value:1,
+    	step:10,
+    	min:0,
+    	max:360,
+    	slide:function(e,ui){
+    		console.log(ui.value);
+    		var tl2 = new TimelineMax({paused:true});
+			tl2.to($(".r1"),0.5,{rotationX:ui.value});
+			tl2.play(0);
+    	}
+    });
+  });
+$("#custom").click(function(){
+	var tl1 = new TimelineMax({paused:true});
+	var cube_e = $("div#cube_e");
+	var front = $("div#front");
+	var up = $("div#up");
+	var bottom = $("div#bottom");
+	var back = $("div#back");
+	TweenMax.set($("div.cube_container"),{perspective:600});
+	TweenLite.set(cube_e,{transformStyle:"preserve-3d"});
+	tl1
+	.to(cube_e,0.5,{z:"-131.5"})
+	.to(front,.5,{rotationX:360,z:131.5},"1")
+	.to(up,.5,{rotationX:90,y:-131.5},"1")
+	.to(back,.5,{rotationX:180,z:-131.5},"1")
+	.to(bottom,.5,{rotationX:270,y:131.5},"1");
+	tl1.play(0);
+	console.log("ENTERED");
+});
+var deg =0;
+$("#next").click(function(){
+	
+	deg -=90;
+	var tl2 = new TimelineMax({paused:true});
+	tl2.to(cube_e,0.5,{rotationX:deg});
+	tl2.play(0);
+});
+$("#previous").click(function(){
+	
+	deg +=90;
+	var tl2 = new TimelineMax({paused:true});
+	tl2.to(cube_e,0.5,{rotationX:deg});
+	tl2.play(0);
+});
+	$(document).ready(function(){
+		$("#custom").trigger("click");
+	})
+</script>
+
+</body>
+</html>
