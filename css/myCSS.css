@@ -1,0 +1,207 @@
+	body{
+		/*height:1080px;
+		width:1980px;*/
+		background-color: #00618e !important;
+	}
+	#parent{
+		/*background-color: lightblue;*/
+		background-color: #00618e;
+	}
+
+	@media screen and (max-width:1000px) {
+	    body {
+	        background-color: #77618e !important;
+	    }
+    	#parent{
+			background-color: #77618e;
+		}
+		.paymentBox{
+			display: none;
+		}
+		.rowContainer{
+			width: 100% !important;
+		}
+	}
+
+	.container {
+		border: 1px solid black;
+		margin:50px;
+		background:#ccc;
+		width:150px;
+	}
+	#cubeParent{
+		height:150px;
+		width:150px;
+		position:relative;
+	}
+	.cubeFace, .cubeFace1{
+		height:150px;
+		width:150px;
+		position:absolute;
+	}
+
+	.cube_container{
+		width: 100%;
+		height: 30%
+		border:3px solid white;
+		float: left;
+		margin-right: 30px;
+		margin-bottom: 50px;
+		background-color: white;
+	}
+	.lastCube{
+		margin-right: 0px;
+	}
+	#cube_e{
+		width: 100%;
+		height: 263px;
+		position: relative;
+	}
+	.box{
+		width: 100%;
+		height: 263px;
+		position: absolute;
+		overflow: hidden;
+		/*opacity: 0.2;*/
+	}
+	#front{
+		/*background-color:#12ABB3;*/
+		/*background: url('img/a.jpg');*/
+		background: #fff;
+		background-size: 100% 263px;
+		background-repeat: no-repeat;
+	}
+	#back{
+		/*background-color:#F2E2B3;*/
+		/*background: url('img/b.jpg');*/
+		background: #fff;
+		background-size: 100% 263px;
+		background-repeat: no-repeat;
+	}
+	#up{
+		/*background-color:#F28AB3;*/
+		/*background: url('img/c.jpg');*/
+		background: #fff;
+		background-size: 100% 263px;
+		background-repeat: no-repeat;
+	}
+	#bottom{
+		/*background-color:#12AB33;*/
+		/*background: url('img/d.jpg');*/
+		background: #fff;
+		background-size: 100% 263px;
+		background-repeat: no-repeat;
+	}
+	#slider{
+		margin-top: 40px;
+		float: left;
+	}
+	#slider2{
+		margin-top: 40px;
+		float: left;
+	}
+	#logo{
+		width: 450px;
+		margin-right: auto;
+		margin-left: auto;
+		border:#0095da solid 1px;
+		border-radius: 2em;
+		background-color: #fff;
+		z-index: 99;
+		position: relative;
+	}
+	#border{
+		border:2em white solid;
+		border-radius: 2em;
+		margin-left: 50px;
+		margin-right: 50px;
+		padding: 10px;
+		padding-bottom: 80px;
+		height: 1160px;
+		margin-top: -80px;
+	}
+	.row1{
+		padding: 50px;
+		margin-bottom: 20px;
+	}
+	.center{
+		width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	#btnExit{
+		opacity: 0%;
+		width: 20px;
+		height: 20px;
+		top:0;
+		right: 0;
+		position: absolute;
+	}
+	.itemImg {
+		width: 19.5%;
+		height: 100%;
+		margin-left: 2px;
+	}
+	.FirstitemImg{
+		margin-left: 3px;
+	}
+	.rowContainer{
+		width: 80%;
+		float: left;
+		margin-top: 30px;
+	}
+
+	.paymentBox{
+		width: 19%;
+		height: 93.5%;
+		float: left;
+		margin :80px 0px;
+		background-color: #00618e;
+	}
+
+	.getAmount{
+		height: 84%;
+		margin-bottom: 20px;
+		overflow:scroll;
+		background: #fff;
+	}
+
+	.payContainer{
+		height: 14%;
+	}
+
+	.payContainer img{
+		float: right;
+		height: 100%;
+		margin-right: 20px;
+	}
+
+	.white_content {
+		display: none;
+		position: absolute;
+		top: 25%;
+		left: 35%;
+		width: 18%;
+		height: 37%;
+		padding: 16px;
+		border: 5px solid orange;
+		background-color: white;
+		z-index:1002;
+		overflow: auto;
+
+	}
+	#showQRcode
+	{
+		padding: 0 10px;
+	}
+
+	#showQRcode img{
+		width: 100%;
+	}
+
+
+	.showPopUp
+	{
+		margin-bottom: 20px;
+		float:right;
+	}
